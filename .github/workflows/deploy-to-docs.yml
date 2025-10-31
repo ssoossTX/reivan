@@ -1,0 +1,48 @@
+name: Build and publish to docs/ on main (classic Pages)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Copy dist to docs
+        run: |
+          rm -rf docs || true
+          mkdir -p docs
+          cp -r dist/* docs/ || true
+
+      - name: Commit docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs || true
+          if git diff --cached --quiet; then
+            echo "No changes to docs"
+          else
+            git commit -m "chore: update docs from dist [skip ci]"
+            git push origin HEAD:main
+          fi
