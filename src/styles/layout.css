@@ -1,0 +1,111 @@
+/* Main Layout */
+main {
+    margin: 0 auto;
+    padding-top: 60px;
+    max-width: 600px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
+
+/* Player Stats */
+#player-stats {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 10000;
+    background: #232b39;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.15em;
+    box-shadow: 0 2px 8px #0003;
+}
+
+/* Clicker */
+.clicker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.clicker-btn {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: none;
+    background: radial-gradient(circle at 30% 30%, #00f 0%, #0f0 60%, #000 100%);
+    box-shadow: 0 0 32px 8px rgba(0,255,255,0.2), 0 0 0 8px rgba(0,0,0,0.1) inset;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: transform 0.1s, box-shadow 0.2s;
+    position: relative;
+}
+
+.clicker-btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 48px 16px #0ff, 0 0 0 8px #000 inset;
+}
+
+.clicker-stats {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 8px #000;
+}
+
+/* Profile */
+.profile-info, .inventory, .abilities {
+    background: rgba(0,0,0,0.5);
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-bottom: 18px;
+    color: #fff;
+    box-shadow: 0 2px 8px #0003;
+}
+
+/* Shop */
+.cases {
+    background: rgba(0,0,0,0.5);
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-bottom: 18px;
+    color: #fff;
+    box-shadow: 0 2px 8px #0003;
+}
+
+.case-btn {
+    padding: 10px 20px;
+    margin: 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    background: linear-gradient(90deg, #0ff 0%, #0f0 100%);
+    color: #111;
+    box-shadow: 0 2px 8px #0003;
+    transition: background 0.2s;
+}
+
+.case-btn.rare {
+    background: linear-gradient(90deg, #0ff 0%, #00f 100%);
+}
+
+.case-btn.epic {
+    background: linear-gradient(90deg, #0ff 0%, #000 100%);
+    color: #fff;
+}
+
+.case-btn:hover {
+    background: linear-gradient(90deg, #0f0 0%, #0ff 100%);
+}
